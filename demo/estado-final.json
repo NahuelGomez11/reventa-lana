@@ -1,0 +1,1468 @@
+{
+  "aviso": "DATOS DE PRUEBA FICTICIOS: precios inventados, no son reales de mercado.",
+  "generadoEn": "2026-10-21T15:23:50.926Z",
+  "resumen": {
+    "cargados": 28,
+    "conCalculo": 27,
+    "sinCalculo": 1,
+    "mediaOAlta": 17,
+    "oportunidades": 11,
+    "proveedores": 6,
+    "capitalPrueba": 3000000,
+    "mayorInversionId": "demo-ideapad3"
+  },
+  "proveedores": [
+    {
+      "id": "demo-prov-1",
+      "nombre": "[DEMO] Importaciones Sur",
+      "notas": "Mayorista ficticio. Buena precio por volumen, compra mínima alta."
+    },
+    {
+      "id": "demo-prov-2",
+      "nombre": "[DEMO] Distribuidora Norte",
+      "notas": "Ficticio. Precio intermedio y envío más caro."
+    },
+    {
+      "id": "demo-prov-3",
+      "nombre": "[DEMO] TecnoLiquidación",
+      "notas": "Ficticio. El más barato, stock limitado y garantía corta."
+    },
+    {
+      "id": "demo-prov-4",
+      "nombre": "[DEMO] Retail Partner",
+      "notas": "Ficticio. Más caro pero sin compra mínima."
+    },
+    {
+      "id": "demo-prov-5",
+      "nombre": "[DEMO] Outlet Mayorista",
+      "notas": "Ficticio. Unidades reacondicionadas o de vitrina."
+    },
+    {
+      "id": "demo-prov-6",
+      "nombre": "[DEMO] Envío Rápido CBA",
+      "notas": "Ficticio. Entrega en 24 h con recargo de envío."
+    }
+  ],
+  "productos": [
+    {
+      "id": "demo-buds6",
+      "nombre": "[DEMO] Auriculares inalámbricos",
+      "categoria": "Audio",
+      "condicion": "nuevo",
+      "cantidad": 12,
+      "precioCompra": 42000,
+      "precioVenta": 74999,
+      "medianaMercado": 75500,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 42000,
+          "envio": 18000,
+          "stock": 40,
+          "compraMinima": 6
+        },
+        {
+          "nombre": "[DEMO] TecnoLiquidación",
+          "precioUnitario": 39500,
+          "envio": 22000,
+          "stock": 8,
+          "compraMinima": 2
+        },
+        {
+          "nombre": "[DEMO] Retail Partner",
+          "precioUnitario": 46800,
+          "envio": 9000,
+          "stock": 15,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 582000,
+        "gananciaPotencialTotal": 181789.55999999997,
+        "margenNetoSobreVentas": 20.199109321457616,
+        "roi": 34.429840909090906
+      },
+      "nivelRiesgo": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ],
+      "diferenciaVsMedianaPct": -0.6635761589403973
+    },
+    {
+      "id": "demo-band9",
+      "nombre": "[DEMO] Pulsera de actividad",
+      "categoria": "Wearables",
+      "condicion": "nuevo",
+      "cantidad": 10,
+      "precioCompra": 78000,
+      "precioVenta": 129999,
+      "medianaMercado": 127950,
+      "observacionesMercado": 6,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 78000,
+          "envio": 15000,
+          "stock": 25,
+          "compraMinima": 5
+        },
+        {
+          "nombre": "[DEMO] Distribuidora Norte",
+          "precioUnitario": 81500,
+          "envio": 24000,
+          "stock": 20,
+          "compraMinima": 3
+        },
+        {
+          "nombre": "[DEMO] Retail Partner",
+          "precioUnitario": 88000,
+          "envio": 8000,
+          "stock": 12,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 845000,
+        "gananciaPotencialTotal": 266991.30000000005,
+        "margenNetoSobreVentas": 20.537950291925323,
+        "roi": 33.37391250000001
+      },
+      "nivelRiesgo": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ],
+      "diferenciaVsMedianaPct": 1.6014067995310668
+    },
+    {
+      "id": "demo-a15",
+      "nombre": "[DEMO] Celular 128 GB",
+      "categoria": "Celulares",
+      "condicion": "nuevo",
+      "cantidad": 8,
+      "precioCompra": 245000,
+      "precioVenta": 339999,
+      "medianaMercado": 338500,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 245000,
+          "envio": 20000,
+          "stock": 18,
+          "compraMinima": 4
+        },
+        {
+          "nombre": "[DEMO] Distribuidora Norte",
+          "precioUnitario": 251000,
+          "envio": 32000,
+          "stock": 10,
+          "compraMinima": 2
+        },
+        {
+          "nombre": "[DEMO] Envío Rápido CBA",
+          "precioUnitario": 248500,
+          "envio": 15000,
+          "stock": 6,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 2044000,
+        "gananciaPotencialTotal": 293593.04,
+        "margenNetoSobreVentas": 10.793893511451504,
+        "roi": 14.73860642570281
+      },
+      "nivelRiesgo": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ],
+      "diferenciaVsMedianaPct": 0.4428360413589365
+    },
+    {
+      "id": "demo-g54",
+      "nombre": "[DEMO] Celular 5G 256 GB",
+      "categoria": "Celulares",
+      "condicion": "nuevo",
+      "cantidad": 8,
+      "precioCompra": 285000,
+      "precioVenta": 389999,
+      "medianaMercado": 389000,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 285000,
+          "envio": 20000,
+          "stock": 14,
+          "compraMinima": 4
+        },
+        {
+          "nombre": "[DEMO] TecnoLiquidación",
+          "precioUnitario": 272000,
+          "envio": 26000,
+          "stock": 3,
+          "compraMinima": 1
+        },
+        {
+          "nombre": "[DEMO] Retail Partner",
+          "precioUnitario": 302000,
+          "envio": 10000,
+          "stock": 9,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 2362000,
+        "gananciaPotencialTotal": 321993.04,
+        "margenNetoSobreVentas": 10.320316205938989,
+        "roi": 13.93909264069264
+      },
+      "nivelRiesgo": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ],
+      "diferenciaVsMedianaPct": 0.25681233933161957
+    },
+    {
+      "id": "demo-rn13pro",
+      "nombre": "[DEMO] Celular 256 GB",
+      "categoria": "Celulares",
+      "condicion": "nuevo",
+      "cantidad": 6,
+      "precioCompra": 420000,
+      "precioVenta": 579999,
+      "medianaMercado": 575500,
+      "observacionesMercado": 6,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 420000,
+          "envio": 18000,
+          "stock": 12,
+          "compraMinima": 3
+        },
+        {
+          "nombre": "[DEMO] Distribuidora Norte",
+          "precioUnitario": 431000,
+          "envio": 30000,
+          "stock": 8,
+          "compraMinima": 2
+        },
+        {
+          "nombre": "[DEMO] Envío Rápido CBA",
+          "precioUnitario": 424000,
+          "envio": 12000,
+          "stock": 4,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 2591000,
+        "gananciaPotencialTotal": 407794.78000000014,
+        "margenNetoSobreVentas": 11.718261008495997,
+        "roi": 15.97941927899687
+      },
+      "nivelRiesgo": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ],
+      "diferenciaVsMedianaPct": 0.7817549956559514
+    },
+    {
+      "id": "demo-ideapad3",
+      "nombre": "[DEMO] Notebook 15,6\" Ryzen 5 / 8 GB / 512 GB",
+      "categoria": "Notebooks",
+      "condicion": "nuevo",
+      "cantidad": 5,
+      "precioCompra": 690000,
+      "precioVenta": 949999,
+      "medianaMercado": 945000,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 690000,
+          "envio": 25000,
+          "stock": 9,
+          "compraMinima": 2
+        },
+        {
+          "nombre": "[DEMO] Distribuidora Norte",
+          "precioUnitario": 705000,
+          "envio": 38000,
+          "stock": 6,
+          "compraMinima": 2
+        },
+        {
+          "nombre": "[DEMO] Retail Partner",
+          "precioUnitario": 739000,
+          "envio": 12000,
+          "stock": 5,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 3535000,
+        "gananciaPotencialTotal": 565495.65,
+        "margenNetoSobreVentas": 11.905184110720118,
+        "roi": 16.203313753581664
+      },
+      "nivelRiesgo": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ],
+      "diferenciaVsMedianaPct": 0.528994708994709
+    },
+    {
+      "id": "demo-aspire5",
+      "nombre": "[DEMO] Notebook 15,6\" Core i5 / 8 GB / 512 GB",
+      "categoria": "Notebooks",
+      "condicion": "nuevo",
+      "cantidad": 4,
+      "precioCompra": 850000,
+      "precioVenta": 1199999,
+      "medianaMercado": 1189000,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 850000,
+          "envio": 25000,
+          "stock": 7,
+          "compraMinima": 2
+        },
+        {
+          "nombre": "[DEMO] TecnoLiquidación",
+          "precioUnitario": 815000,
+          "envio": 32000,
+          "stock": 2,
+          "compraMinima": 1
+        },
+        {
+          "nombre": "[DEMO] Envío Rápido CBA",
+          "precioUnitario": 862000,
+          "envio": 14000,
+          "stock": 3,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 3479000,
+        "gananciaPotencialTotal": -341002.64,
+        "margenNetoSobreVentas": -7.1042275868563225,
+        "roi": -9.904230031948883
+      },
+      "nivelRiesgo": "alta",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ],
+      "diferenciaVsMedianaPct": 0.9250630782169891
+    },
+    {
+      "id": "demo-taba9",
+      "nombre": "[DEMO] Tablet 11\" 64 GB",
+      "categoria": "Tablets",
+      "condicion": "nuevo",
+      "cantidad": 8,
+      "precioCompra": 210000,
+      "precioVenta": 299999,
+      "medianaMercado": 297500,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 210000,
+          "envio": 16000,
+          "stock": 16,
+          "compraMinima": 4
+        },
+        {
+          "nombre": "[DEMO] Distribuidora Norte",
+          "precioUnitario": 216500,
+          "envio": 26000,
+          "stock": 11,
+          "compraMinima": 2
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 1748000,
+        "gananciaPotencialTotal": 315993.04,
+        "margenNetoSobreVentas": 13.166420554735181,
+        "roi": 18.544192488262908
+      },
+      "nivelRiesgo": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ],
+      "diferenciaVsMedianaPct": 0.84
+    },
+    {
+      "id": "demo-tabm11",
+      "nombre": "[DEMO] Tablet 11\" 128 GB",
+      "categoria": "Tablets",
+      "condicion": "nuevo",
+      "cantidad": 8,
+      "precioCompra": 240000,
+      "precioVenta": 349999,
+      "medianaMercado": 342000,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 240000,
+          "envio": 16000,
+          "stock": 14,
+          "compraMinima": 4
+        },
+        {
+          "nombre": "[DEMO] Outlet Mayorista",
+          "precioUnitario": 221000,
+          "envio": 18000,
+          "stock": 3,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 1989000,
+        "gananciaPotencialTotal": 420593.04,
+        "margenNetoSobreVentas": 15.021222917779763,
+        "roi": 21.624320822622106
+      },
+      "nivelRiesgo": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ],
+      "diferenciaVsMedianaPct": 2.338888888888889
+    },
+    {
+      "id": "demo-sam24",
+      "nombre": "[DEMO] Monitor 24\" FHD 75 Hz",
+      "categoria": "Monitores",
+      "condicion": "nuevo",
+      "cantidad": 8,
+      "precioCompra": 165000,
+      "precioVenta": 239999,
+      "medianaMercado": 238000,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 165000,
+          "envio": 22000,
+          "stock": 12,
+          "compraMinima": 4
+        },
+        {
+          "nombre": "[DEMO] Distribuidora Norte",
+          "precioUnitario": 171000,
+          "envio": 34000,
+          "stock": 9,
+          "compraMinima": 2
+        },
+        {
+          "nombre": "[DEMO] Envío Rápido CBA",
+          "precioUnitario": 168000,
+          "envio": 16000,
+          "stock": 5,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 1410000,
+        "gananciaPotencialTotal": 237193.04000000004,
+        "margenNetoSobreVentas": 12.353855641065174,
+        "roi": 17.569854814814818
+      },
+      "nivelRiesgo": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ],
+      "diferenciaVsMedianaPct": 0.8399159663865545
+    },
+    {
+      "id": "demo-ug27",
+      "nombre": "[DEMO] Monitor 27\" QHD 144 Hz",
+      "categoria": "Monitores",
+      "condicion": "nuevo",
+      "cantidad": 4,
+      "precioCompra": 380000,
+      "precioVenta": 529999,
+      "medianaMercado": 515000,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 380000,
+          "envio": 24000,
+          "stock": 6,
+          "compraMinima": 2
+        },
+        {
+          "nombre": "[DEMO] TecnoLiquidación",
+          "precioUnitario": 362000,
+          "envio": 30000,
+          "stock": 2,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 1590000,
+        "gananciaPotencialTotal": 233196.52000000002,
+        "margenNetoSobreVentas": 10.999856603503027,
+        "roi": 14.986922879177378
+      },
+      "nivelRiesgo": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ],
+      "diferenciaVsMedianaPct": 2.9124271844660194
+    },
+    {
+      "id": "demo-kumara",
+      "nombre": "[DEMO] Teclado mecánico",
+      "categoria": "Periféricos",
+      "condicion": "nuevo",
+      "cantidad": 15,
+      "precioCompra": 38000,
+      "precioVenta": 64999,
+      "medianaMercado": 65500,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 38000,
+          "envio": 14000,
+          "stock": 50,
+          "compraMinima": 6
+        },
+        {
+          "nombre": "[DEMO] TecnoLiquidación",
+          "precioUnitario": 35900,
+          "envio": 18000,
+          "stock": 10,
+          "compraMinima": 3
+        },
+        {
+          "nombre": "[DEMO] Retail Partner",
+          "precioUnitario": 42500,
+          "envio": 7000,
+          "stock": 20,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 655500,
+        "gananciaPotencialTotal": 173236.94999999995,
+        "margenNetoSobreVentas": 17.768165664087135,
+        "roi": 29.462066326530607
+      },
+      "nivelRiesgo": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ],
+      "diferenciaVsMedianaPct": -0.7648854961832061
+    },
+    {
+      "id": "demo-g305",
+      "nombre": "[DEMO] Mouse inalámbrico",
+      "categoria": "Periféricos",
+      "condicion": "nuevo",
+      "cantidad": 12,
+      "precioCompra": 52000,
+      "precioVenta": 79999,
+      "medianaMercado": 79500,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 52000,
+          "envio": 12000,
+          "stock": 30,
+          "compraMinima": 5
+        },
+        {
+          "nombre": "[DEMO] Envío Rápido CBA",
+          "precioUnitario": 54500,
+          "envio": 9000,
+          "stock": 8,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 694000,
+        "gananciaPotencialTotal": 123189.55999999997,
+        "margenNetoSobreVentas": 12.83240623841131,
+        "roi": 19.248368749999994
+      },
+      "nivelRiesgo": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ],
+      "diferenciaVsMedianaPct": 0.6276729559748427
+    },
+    {
+      "id": "demo-jblgo4",
+      "nombre": "[DEMO] Parlante portátil",
+      "categoria": "Audio",
+      "condicion": "nuevo",
+      "cantidad": 10,
+      "precioCompra": 58000,
+      "precioVenta": 89999,
+      "medianaMercado": 88500,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 58000,
+          "envio": 12000,
+          "stock": 22,
+          "compraMinima": 5
+        },
+        {
+          "nombre": "[DEMO] Distribuidora Norte",
+          "precioUnitario": 60500,
+          "envio": 20000,
+          "stock": 15,
+          "compraMinima": 3
+        },
+        {
+          "nombre": "[DEMO] Retail Partner",
+          "precioUnitario": 65000,
+          "envio": 7000,
+          "stock": 10,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 642000,
+        "gananciaPotencialTotal": 123491.29999999997,
+        "margenNetoSobreVentas": 13.721408015644615,
+        "roi": 20.685309882747063
+      },
+      "nivelRiesgo": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ],
+      "diferenciaVsMedianaPct": 1.6937853107344631
+    },
+    {
+      "id": "demo-xb100",
+      "nombre": "[DEMO] Parlante portátil resistente",
+      "categoria": "Audio",
+      "condicion": "nuevo",
+      "cantidad": 8,
+      "precioCompra": 85000,
+      "precioVenta": 129999,
+      "medianaMercado": 128900,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 85000,
+          "envio": 12000,
+          "stock": 16,
+          "compraMinima": 4
+        },
+        {
+          "nombre": "[DEMO] TecnoLiquidación",
+          "precioUnitario": 81000,
+          "envio": 17000,
+          "stock": 3,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 733000,
+        "gananciaPotencialTotal": 154193.04,
+        "margenNetoSobreVentas": 14.826367895137658,
+        "roi": 22.12238737446198
+      },
+      "nivelRiesgo": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ],
+      "diferenciaVsMedianaPct": 0.8525989138867339
+    },
+    {
+      "id": "demo-gts4",
+      "nombre": "[DEMO] Smartwatch",
+      "categoria": "Wearables",
+      "condicion": "nuevo",
+      "cantidad": 8,
+      "precioCompra": 115000,
+      "precioVenta": 179999,
+      "medianaMercado": 175500,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 115000,
+          "envio": 14000,
+          "stock": 12,
+          "compraMinima": 4
+        },
+        {
+          "nombre": "[DEMO] Distribuidora Norte",
+          "precioUnitario": 119500,
+          "envio": 22000,
+          "stock": 9,
+          "compraMinima": 2
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 976000,
+        "gananciaPotencialTotal": 257593.04000000004,
+        "margenNetoSobreVentas": 17.888504936138535,
+        "roi": 27.403514893617025
+      },
+      "nivelRiesgo": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ],
+      "diferenciaVsMedianaPct": 2.563532763532763
+    },
+    {
+      "id": "demo-c270",
+      "nombre": "[DEMO] Cámara web HD",
+      "categoria": "Accesorios",
+      "condicion": "nuevo",
+      "cantidad": 20,
+      "precioCompra": 22000,
+      "precioVenta": 38999,
+      "medianaMercado": 37500,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 22000,
+          "envio": 10000,
+          "stock": 60,
+          "compraMinima": 8
+        },
+        {
+          "nombre": "[DEMO] Retail Partner",
+          "precioUnitario": 25900,
+          "envio": 6000,
+          "stock": 25,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 533000,
+        "gananciaPotencialTotal": 124582.60000000002,
+        "margenNetoSobreVentas": 15.972537757378397,
+        "roi": 27.501677704194265
+      },
+      "nivelRiesgo": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ],
+      "diferenciaVsMedianaPct": 3.997333333333333
+    },
+    {
+      "id": "demo-nv2",
+      "nombre": "[DEMO] SSD NVMe 1 TB",
+      "categoria": "Almacenamiento",
+      "condicion": "nuevo",
+      "cantidad": 15,
+      "precioCompra": 78000,
+      "precioVenta": 119999,
+      "medianaMercado": 117500,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 78000,
+          "envio": 10000,
+          "stock": 40,
+          "compraMinima": 6
+        },
+        {
+          "nombre": "[DEMO] TecnoLiquidación",
+          "precioUnitario": 74500,
+          "envio": 15000,
+          "stock": 15,
+          "compraMinima": 6
+        },
+        {
+          "nombre": "[DEMO] Retail Partner",
+          "precioUnitario": 84000,
+          "envio": 6000,
+          "stock": 18,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 1244000,
+        "gananciaPotencialTotal": 293486.95,
+        "margenNetoSobreVentas": 16.30496643027581,
+        "roi": 24.787749155405407
+      },
+      "nivelRiesgo": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ],
+      "diferenciaVsMedianaPct": 2.126808510638298
+    },
+    {
+      "id": "demo-wd2tb",
+      "nombre": "[DEMO] Disco externo 2 TB",
+      "categoria": "Almacenamiento",
+      "condicion": "nuevo",
+      "cantidad": 8,
+      "precioCompra": 145000,
+      "precioVenta": 219999,
+      "medianaMercado": 216500,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 145000,
+          "envio": 12000,
+          "stock": 15,
+          "compraMinima": 4
+        },
+        {
+          "nombre": "[DEMO] Distribuidora Norte",
+          "precioUnitario": 149500,
+          "envio": 20000,
+          "stock": 10,
+          "compraMinima": 2
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 1217000,
+        "gananciaPotencialTotal": 293393.04000000004,
+        "margenNetoSobreVentas": 16.670134864249388,
+        "roi": 24.927191163976214
+      },
+      "nivelRiesgo": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ],
+      "diferenciaVsMedianaPct": 1.6161662817551963
+    },
+    {
+      "id": "demo-switch",
+      "nombre": "[DEMO] Consola (usada)",
+      "categoria": "Gaming",
+      "condicion": "usado",
+      "cantidad": 6,
+      "precioCompra": 380000,
+      "precioVenta": 519999,
+      "medianaMercado": 505000,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Outlet Mayorista",
+          "precioUnitario": 380000,
+          "envio": 15000,
+          "stock": 4,
+          "compraMinima": 1
+        },
+        {
+          "nombre": "[DEMO] Distribuidora Norte",
+          "precioUnitario": 398000,
+          "envio": 25000,
+          "stock": 3,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 2363000,
+        "gananciaPotencialTotal": 323194.78000000014,
+        "margenNetoSobreVentas": 10.358826972103156,
+        "roi": 13.960897624190071
+      },
+      "nivelRiesgo": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ],
+      "diferenciaVsMedianaPct": 2.97009900990099
+    },
+    {
+      "id": "demo-xboxpad",
+      "nombre": "[DEMO] Joystick (usado)",
+      "categoria": "Gaming",
+      "condicion": "usado",
+      "cantidad": 10,
+      "precioCompra": 75000,
+      "precioVenta": 119999,
+      "medianaMercado": 112000,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Outlet Mayorista",
+          "precioUnitario": 75000,
+          "envio": 8000,
+          "stock": 12,
+          "compraMinima": 2
+        },
+        {
+          "nombre": "[DEMO] Retail Partner",
+          "precioUnitario": 92000,
+          "envio": 5000,
+          "stock": 6,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 803000,
+        "gananciaPotencialTotal": 222991.3,
+        "margenNetoSobreVentas": 18.582763189693246,
+        "roi": 29.225596330275227
+      },
+      "nivelRiesgo": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ],
+      "diferenciaVsMedianaPct": 7.141964285714286
+    },
+    {
+      "id": "demo-anker65",
+      "nombre": "[DEMO] Cargador GaN 65 W",
+      "categoria": "Accesorios",
+      "condicion": "nuevo",
+      "cantidad": 20,
+      "precioCompra": 45000,
+      "precioVenta": 74999,
+      "medianaMercado": 73500,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 45000,
+          "envio": 12000,
+          "stock": 45,
+          "compraMinima": 8
+        },
+        {
+          "nombre": "[DEMO] TecnoLiquidación",
+          "precioUnitario": 42800,
+          "envio": 16000,
+          "stock": 7,
+          "compraMinima": 3
+        },
+        {
+          "nombre": "[DEMO] Retail Partner",
+          "precioUnitario": 49900,
+          "envio": 6000,
+          "stock": 20,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 996000,
+        "gananciaPotencialTotal": 283982.6,
+        "margenNetoSobreVentas": 18.93242576567687,
+        "roi": 31.002467248908296
+      },
+      "nivelRiesgo": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ],
+      "diferenciaVsMedianaPct": 2.0394557823129253
+    },
+    {
+      "id": "demo-anker20k",
+      "nombre": "[DEMO] Batería externa 20.000 mAh",
+      "categoria": "Accesorios",
+      "condicion": "nuevo",
+      "cantidad": 12,
+      "precioCompra": 62000,
+      "precioVenta": 99999,
+      "medianaMercado": 98500,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 62000,
+          "envio": 12000,
+          "stock": 20,
+          "compraMinima": 5
+        },
+        {
+          "nombre": "[DEMO] Distribuidora Norte",
+          "precioUnitario": 64500,
+          "envio": 19000,
+          "stock": 14,
+          "compraMinima": 3
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 814000.0000000001,
+        "gananciaPotencialTotal": 209589.55999999994,
+        "margenNetoSobreVentas": 17.465971326379925,
+        "roi": 27.577573684210517
+      },
+      "nivelRiesgo": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ],
+      "diferenciaVsMedianaPct": 1.5218274111675125
+    },
+    {
+      "id": "demo-ax23",
+      "nombre": "[DEMO] Router Wi-Fi 6",
+      "categoria": "Redes",
+      "condicion": "nuevo",
+      "cantidad": 10,
+      "precioCompra": 68000,
+      "precioVenta": 104999,
+      "medianaMercado": 103500,
+      "observacionesMercado": 5,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 68000,
+          "envio": 14000,
+          "stock": 25,
+          "compraMinima": 5
+        },
+        {
+          "nombre": "[DEMO] Outlet Mayorista",
+          "precioUnitario": 61000,
+          "envio": 16000,
+          "stock": 2,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 744000,
+        "gananciaPotencialTotal": 149991.3,
+        "margenNetoSobreVentas": 14.285021762112018,
+        "roi": 21.457982832618026
+      },
+      "nivelRiesgo": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ],
+      "diferenciaVsMedianaPct": 1.4483091787439613
+    },
+    {
+      "id": "demo-tv55",
+      "nombre": "[DEMO] Televisor 55\" QLED",
+      "categoria": "TV",
+      "condicion": "nuevo",
+      "cantidad": 3,
+      "precioCompra": 780000,
+      "precioVenta": 1099999,
+      "medianaMercado": 917500,
+      "observacionesMercado": 4,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 780000,
+          "envio": 30000,
+          "stock": 4,
+          "compraMinima": 1
+        },
+        {
+          "nombre": "[DEMO] Retail Partner",
+          "precioUnitario": 815000,
+          "envio": 15000,
+          "stock": 2,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 2426000,
+        "gananciaPotencialTotal": 420397.39000000013,
+        "margenNetoSobreVentas": 12.739326429690697,
+        "roi": 17.5898489539749
+      },
+      "nivelRiesgo": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE",
+        "PRECIO_FUERA_DE_MERCADO"
+      ],
+      "diferenciaVsMedianaPct": 19.89089918256131
+    },
+    {
+      "id": "demo-watch9",
+      "nombre": "[DEMO] Smartwatch deportivo",
+      "categoria": "Wearables",
+      "condicion": "nuevo",
+      "cantidad": 20,
+      "precioCompra": 18000,
+      "precioVenta": 27999,
+      "medianaMercado": 26200,
+      "observacionesMercado": 4,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] TecnoLiquidación",
+          "precioUnitario": 18000,
+          "envio": 10000,
+          "stock": 30,
+          "compraMinima": 10
+        },
+        {
+          "nombre": "[DEMO] Retail Partner",
+          "precioUnitario": 21500,
+          "envio": 5000,
+          "stock": 40,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 452000,
+        "gananciaPotencialTotal": 19182.600000000002,
+        "margenNetoSobreVentas": 3.425586628093861,
+        "roi": 5.156612903225807
+      },
+      "nivelRiesgo": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ],
+      "diferenciaVsMedianaPct": 6.866412213740459
+    },
+    {
+      "id": "demo-drone",
+      "nombre": "[DEMO] Dron con cámara",
+      "categoria": "Drones",
+      "condicion": "nuevo",
+      "cantidad": 4,
+      "precioCompra": 320000,
+      "precioVenta": 469999,
+      "medianaMercado": 457000,
+      "observacionesMercado": 2,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 320000,
+          "envio": 18000,
+          "stock": 5,
+          "compraMinima": 2
+        }
+      ],
+      "financiero": {
+        "inversionTotal": 1340000,
+        "gananciaPotencialTotal": 278796.52,
+        "margenNetoSobreVentas": 14.82963368007166,
+        "roi": 21.31471865443425
+      },
+      "nivelRiesgo": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE",
+        "INFO_MERCADO_INSUFICIENTE"
+      ],
+      "diferenciaVsMedianaPct": 2.844420131291028
+    },
+    {
+      "id": "demo-gpu3060",
+      "nombre": "[DEMO] Placa de video 12 GB",
+      "categoria": "Hardware",
+      "condicion": "nuevo",
+      "cantidad": 4,
+      "precioCompra": null,
+      "precioVenta": 389999,
+      "medianaMercado": 381500,
+      "observacionesMercado": 4,
+      "proveedores": [
+        {
+          "nombre": "[DEMO] Importaciones Sur",
+          "precioUnitario": 0,
+          "envio": 18000,
+          "stock": 3,
+          "compraMinima": 1
+        }
+      ],
+      "financiero": null,
+      "nivelRiesgo": "alta",
+      "alertas": [
+        "DATOS_INCOMPLETOS"
+      ],
+      "diferenciaVsMedianaPct": null
+    }
+  ],
+  "analisis": [
+    {
+      "id": "demo-buds6",
+      "nombre": "[DEMO] Auriculares inalámbricos",
+      "margen": 20.199109321457616,
+      "roi": 34.429840909090906,
+      "nivel": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ]
+    },
+    {
+      "id": "demo-band9",
+      "nombre": "[DEMO] Pulsera de actividad",
+      "margen": 20.537950291925323,
+      "roi": 33.37391250000001,
+      "nivel": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ]
+    },
+    {
+      "id": "demo-a15",
+      "nombre": "[DEMO] Celular 128 GB",
+      "margen": 10.793893511451504,
+      "roi": 14.73860642570281,
+      "nivel": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ]
+    },
+    {
+      "id": "demo-g54",
+      "nombre": "[DEMO] Celular 5G 256 GB",
+      "margen": 10.320316205938989,
+      "roi": 13.93909264069264,
+      "nivel": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ]
+    },
+    {
+      "id": "demo-rn13pro",
+      "nombre": "[DEMO] Celular 256 GB",
+      "margen": 11.718261008495997,
+      "roi": 15.97941927899687,
+      "nivel": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ]
+    },
+    {
+      "id": "demo-ideapad3",
+      "nombre": "[DEMO] Notebook 15,6\" Ryzen 5 / 8 GB / 512 GB",
+      "margen": 11.905184110720118,
+      "roi": 16.203313753581664,
+      "nivel": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ]
+    },
+    {
+      "id": "demo-aspire5",
+      "nombre": "[DEMO] Notebook 15,6\" Core i5 / 8 GB / 512 GB",
+      "margen": -7.1042275868563225,
+      "roi": -9.904230031948883,
+      "nivel": "alta",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ]
+    },
+    {
+      "id": "demo-taba9",
+      "nombre": "[DEMO] Tablet 11\" 64 GB",
+      "margen": 13.166420554735181,
+      "roi": 18.544192488262908,
+      "nivel": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ]
+    },
+    {
+      "id": "demo-tabm11",
+      "nombre": "[DEMO] Tablet 11\" 128 GB",
+      "margen": 15.021222917779763,
+      "roi": 21.624320822622106,
+      "nivel": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ]
+    },
+    {
+      "id": "demo-sam24",
+      "nombre": "[DEMO] Monitor 24\" FHD 75 Hz",
+      "margen": 12.353855641065174,
+      "roi": 17.569854814814818,
+      "nivel": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ]
+    },
+    {
+      "id": "demo-ug27",
+      "nombre": "[DEMO] Monitor 27\" QHD 144 Hz",
+      "margen": 10.999856603503027,
+      "roi": 14.986922879177378,
+      "nivel": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ]
+    },
+    {
+      "id": "demo-kumara",
+      "nombre": "[DEMO] Teclado mecánico",
+      "margen": 17.768165664087135,
+      "roi": 29.462066326530607,
+      "nivel": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ]
+    },
+    {
+      "id": "demo-g305",
+      "nombre": "[DEMO] Mouse inalámbrico",
+      "margen": 12.83240623841131,
+      "roi": 19.248368749999994,
+      "nivel": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ]
+    },
+    {
+      "id": "demo-jblgo4",
+      "nombre": "[DEMO] Parlante portátil",
+      "margen": 13.721408015644615,
+      "roi": 20.685309882747063,
+      "nivel": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ]
+    },
+    {
+      "id": "demo-xb100",
+      "nombre": "[DEMO] Parlante portátil resistente",
+      "margen": 14.826367895137658,
+      "roi": 22.12238737446198,
+      "nivel": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ]
+    },
+    {
+      "id": "demo-gts4",
+      "nombre": "[DEMO] Smartwatch",
+      "margen": 17.888504936138535,
+      "roi": 27.403514893617025,
+      "nivel": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ]
+    },
+    {
+      "id": "demo-c270",
+      "nombre": "[DEMO] Cámara web HD",
+      "margen": 15.972537757378397,
+      "roi": 27.501677704194265,
+      "nivel": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ]
+    },
+    {
+      "id": "demo-nv2",
+      "nombre": "[DEMO] SSD NVMe 1 TB",
+      "margen": 16.30496643027581,
+      "roi": 24.787749155405407,
+      "nivel": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ]
+    },
+    {
+      "id": "demo-wd2tb",
+      "nombre": "[DEMO] Disco externo 2 TB",
+      "margen": 16.670134864249388,
+      "roi": 24.927191163976214,
+      "nivel": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ]
+    },
+    {
+      "id": "demo-switch",
+      "nombre": "[DEMO] Consola (usada)",
+      "margen": 10.358826972103156,
+      "roi": 13.960897624190071,
+      "nivel": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ]
+    },
+    {
+      "id": "demo-xboxpad",
+      "nombre": "[DEMO] Joystick (usado)",
+      "margen": 18.582763189693246,
+      "roi": 29.225596330275227,
+      "nivel": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ]
+    },
+    {
+      "id": "demo-anker65",
+      "nombre": "[DEMO] Cargador GaN 65 W",
+      "margen": 18.93242576567687,
+      "roi": 31.002467248908296,
+      "nivel": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ]
+    },
+    {
+      "id": "demo-anker20k",
+      "nombre": "[DEMO] Batería externa 20.000 mAh",
+      "margen": 17.465971326379925,
+      "roi": 27.577573684210517,
+      "nivel": "baja",
+      "alertas": [
+        "OPORTUNIDAD_A_INVESTIGAR"
+      ]
+    },
+    {
+      "id": "demo-ax23",
+      "nombre": "[DEMO] Router Wi-Fi 6",
+      "margen": 14.285021762112018,
+      "roi": 21.457982832618026,
+      "nivel": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ]
+    },
+    {
+      "id": "demo-tv55",
+      "nombre": "[DEMO] Televisor 55\" QLED",
+      "margen": 12.739326429690697,
+      "roi": 17.5898489539749,
+      "nivel": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE",
+        "PRECIO_FUERA_DE_MERCADO"
+      ]
+    },
+    {
+      "id": "demo-watch9",
+      "nombre": "[DEMO] Smartwatch deportivo",
+      "margen": 3.425586628093861,
+      "roi": 5.156612903225807,
+      "nivel": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE"
+      ]
+    },
+    {
+      "id": "demo-drone",
+      "nombre": "[DEMO] Dron con cámara",
+      "margen": 14.82963368007166,
+      "roi": 21.31471865443425,
+      "nivel": "media",
+      "alertas": [
+        "MARGEN_INSUFICIENTE",
+        "INFO_MERCADO_INSUFICIENTE"
+      ]
+    },
+    {
+      "id": "demo-gpu3060",
+      "nombre": "[DEMO] Placa de video 12 GB",
+      "margen": null,
+      "roi": null,
+      "nivel": "alta",
+      "alertas": [
+        "DATOS_INCOMPLETOS"
+      ]
+    }
+  ],
+  "accionesManuales": [
+    "Recorrido de las pantallas: Dashboard, Productos, Proveedores, Configuración y Detalle.",
+    "Se agregó un precio al simulador de \"[DEMO] Auriculares inalámbricos\"."
+  ],
+  "nota": "DATOS DE PRUEBA FICTICIOS. Los números de margen/ROI/riesgo de este reporte los recalcula este script replicando la lógica del motor de dominio; la verificación exacta del motor se hace en las pruebas automatizadas (Vitest, sesion-usuario-demo.spec.ts)."
+}

@@ -1,0 +1,100 @@
+<header class="sticky top-0 z-40 border-b border-slate-700 bg-white/90 backdrop-blur-lg">
+  <div class="mx-auto flex h-14 max-w-5xl items-center justify-between gap-3 px-4">
+    <a routerLink="/dashboard" class="flex items-center gap-2" aria-label="Ir al inicio">
+      <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-cyan-400 text-sm font-bold text-[#050914] shadow-[0_0_20px_-4px_rgba(139,92,246,0.9)]">
+        L
+      </span>
+      <span class="bg-gradient-to-r from-violet-300 to-cyan-300 bg-clip-text text-base font-bold tracking-tight text-transparent">{{ appName }}</span>
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Menú principal">
+      @for (item of items; track item.ruta) {
+        <a
+          [routerLink]="item.ruta"
+          routerLinkActive="bg-brand-50 text-brand-700"
+          class="rounded-xl px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100:bg-slate-800 hover:text-slate-900:text-slate-100"
+          >{{ item.texto }}</a
+        >
+      }
+    </nav>
+
+    <a routerLink="/productos/nuevo" class="btn-primary hidden md:inline-flex">+ Nuevo análisis</a>
+  </div>
+</header>
+
+<main class="mx-auto max-w-5xl px-4 pb-28 pt-5 md:pb-12">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="hidden border-t border-slate-700 bg-white md:block">
+  <p class="mx-auto max-w-5xl px-6 py-5 text-xs text-slate-500">
+    Los datos se guardan en este navegador. Las cifras son una guía, no una garantía de venta.
+  </p>
+</footer>
+
+<nav
+  class="fixed inset-x-0 bottom-0 z-40 border-t border-slate-700 bg-white/95 backdrop-blur-lg md:hidden"
+  style="padding-bottom: env(safe-area-inset-bottom)"
+  aria-label="Menú principal"
+>
+  <div class="mx-auto grid max-w-md grid-cols-5 items-end">
+    @for (item of itemsMovil.slice(0, 2); track item.ruta) {
+      <a
+        [routerLink]="item.ruta"
+        routerLinkActive="text-brand-600"
+        class="flex min-h-14 flex-col items-center justify-center gap-0.5 text-[11px] font-medium text-slate-500"
+      >
+        <ng-container [ngTemplateOutlet]="icono" [ngTemplateOutletContext]="{ $implicit: item.icono }"></ng-container>
+        <span>{{ item.texto }}</span>
+      </a>
+    }
+
+    <div class="flex justify-center">
+      <a
+        routerLink="/productos/nuevo"
+        class="-mt-5 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-cyan-400 text-[#050914] shadow-[0_0_28px_-4px_rgba(139,92,246,0.9)] ring-4 ring-white[#050914]"
+        aria-label="Nuevo análisis"
+      >
+        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+        </svg>
+      </a>
+    </div>
+
+    @for (item of itemsMovil.slice(2); track item.ruta) {
+      <a
+        [routerLink]="item.ruta"
+        routerLinkActive="text-brand-600"
+        class="flex min-h-14 flex-col items-center justify-center gap-0.5 text-[11px] font-medium text-slate-500"
+      >
+        <ng-container [ngTemplateOutlet]="icono" [ngTemplateOutletContext]="{ $implicit: item.icono }"></ng-container>
+        <span>{{ item.texto }}</span>
+      </a>
+    }
+  </div>
+</nav>
+
+<ng-template #icono let-tipo>
+  @switch (tipo) {
+    @case ('inicio') {
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+      </svg>
+    }
+    @case ('productos') {
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+      </svg>
+    }
+    @case ('proveedores') {
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128H3.75m11.25 0a9.38 9.38 0 01-.786-3.07M3.75 19.128a9.337 9.337 0 004.121.952A9.38 9.38 0 0010.5 19.5M3.75 19.128v-.003a6.375 6.375 0 0112.75 0M12 9.75a3 3 0 110-6 3 3 0 010 6z" />
+      </svg>
+    }
+    @default {
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+      </svg>
+    }
+  }
+</ng-template>

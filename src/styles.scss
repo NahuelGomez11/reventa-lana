@@ -1,0 +1,208 @@
+@import "tailwindcss";
+
+/*
+ * Tema "sistema": fondo oscuro, acentos violeta y cian, superficies de vidrio.
+ * Las escalas de color se redefinen para que las plantillas existentes (bg-white,
+ * text-slate-900, bg-emerald-50, etc.) adopten la paleta oscura sin cambiar cada componente.
+ */
+@theme {
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Superficies y texto (escala slate invertida: 900 = texto principal). */
+  --color-white: #0d1426;
+  --color-slate-50: #050914;
+  --color-slate-100: #0b1222;
+  --color-slate-200: #15203a;
+  --color-slate-300: #22304f;
+  --color-slate-400: #3b4a68;
+  --color-slate-500: #64748b;
+  --color-slate-600: #94a3b8;
+  --color-slate-700: #cbd5e1;
+  --color-slate-800: #e2e8f0;
+  --color-slate-900: #f1f5f9;
+  --color-slate-950: #f8fafc;
+
+  /* Acento principal: violeta. */
+  --color-brand-50: #151033;
+  --color-brand-100: #1d1747;
+  --color-brand-200: #2c2370;
+  --color-brand-300: #4c3aa6;
+  --color-brand-400: #7c5cf6;
+  --color-brand-500: #8b5cf6;
+  --color-brand-600: #a78bfa;
+  --color-brand-700: #c4b5fd;
+  --color-brand-800: #ddd6fe;
+  --color-brand-900: #ede9fe;
+  --color-brand-950: #f5f3ff;
+
+  /* Estados (tintes oscuros para fondos, tonos claros para texto). */
+  --color-emerald-50: #052e22;
+  --color-emerald-100: #073d2d;
+  --color-emerald-200: #0d5a43;
+  --color-emerald-300: #16805f;
+  --color-emerald-500: #34d399;
+  --color-emerald-600: #6ee7b7;
+  --color-emerald-700: #6ee7b7;
+  --color-emerald-800: #a7f3d0;
+  --color-emerald-900: #d1fae5;
+  --color-green-50: #052e22;
+  --color-green-700: #6ee7b7;
+
+  --color-amber-50: #2a1d05;
+  --color-amber-100: #3a2708;
+  --color-amber-200: #5a3d0b;
+  --color-amber-300: #92600f;
+  --color-amber-500: #f59e0b;
+  --color-amber-600: #fbbf24;
+  --color-amber-700: #fcd34d;
+  --color-amber-800: #fde68a;
+  --color-amber-900: #fef3c7;
+
+  --color-rose-50: #2a0a14;
+  --color-rose-100: #3b0d1d;
+  --color-rose-200: #5c1630;
+  --color-rose-300: #9f1239;
+  --color-rose-500: #f43f5e;
+  --color-rose-600: #fb7185;
+  --color-rose-700: #fda4af;
+  --color-rose-800: #fecdd3;
+  --color-rose-900: #ffe4e6;
+  --color-red-50: #2a0a14;
+  --color-red-100: #3b0d1d;
+  --color-red-200: #5c1630;
+  --color-red-600: #fb7185;
+  --color-red-700: #fda4af;
+  --color-red-800: #fecdd3;
+
+  --color-sky-50: #071a2c;
+  --color-sky-100: #0b2740;
+  --color-sky-200: #0f3558;
+  --color-sky-700: #7dd3fc;
+  --color-sky-800: #bae6fd;
+  --color-sky-900: #e0f2fe;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: #0b1220;
+  background-image:
+    radial-gradient(ellipse 90% 60% at 50% -20%, rgba(139, 92, 246, 0.16), transparent 70%);
+  background-attachment: fixed;
+  font-variant-numeric: tabular-nums;
+  @apply text-slate-900 antialiased;
+}
+
+h1,
+h2 {
+  letter-spacing: -0.015em;
+  color: #f1f5f9;
+}
+
+::selection {
+  background: rgba(139, 92, 246, 0.45);
+  color: #f8fafc;
+}
+
+/* Una tabla o un texto largo no debe ensanchar la columna fuera de la pantalla en móvil. */
+@layer base {
+  [class*="grid"]:not([class*="grid-cols-"]) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@layer components {
+  /* Tarjeta de vidrio con borde sutil y resplandor violeta. */
+  .card {
+    border-radius: 1.25rem;
+    padding: 1.25rem;
+    background: #111a2e;
+    border: 1px solid #1f2a44;
+    box-shadow: 0 8px 24px -16px rgba(0, 0, 0, 0.6);
+  }
+
+  .tile {
+    border-radius: 1rem;
+    background: #15203a;
+    border: 1px solid #1f2a44;
+  }
+
+  /* Botones de al menos 44px de alto para uso táctil. */
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-danger,
+  .btn-soft-danger,
+  .btn-ghost {
+    @apply inline-flex min-h-11 items-center justify-center gap-1.5 rounded-2xl px-4 py-2.5 text-base font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 disabled:pointer-events-none disabled:opacity-50 sm:text-sm;
+  }
+
+  /* Acción principal: degradado violeta a cian con resplandor. */
+  .btn-primary {
+    background-image: linear-gradient(120deg, #8b5cf6 0%, #6366f1 45%, #22d3ee 100%);
+    color: #050914;
+    box-shadow: 0 0 28px -8px rgba(139, 92, 246, 0.85);
+  }
+  .btn-primary:hover {
+    filter: brightness(1.12);
+    box-shadow: 0 0 36px -6px rgba(34, 211, 238, 0.7);
+  }
+
+  .btn-secondary {
+    @apply bg-white text-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 hover:bg-slate-100;
+  }
+
+  .btn-danger {
+    background-image: linear-gradient(120deg, #f43f5e, #e11d48);
+    color: #fff1f2;
+    box-shadow: 0 0 24px -8px rgba(244, 63, 94, 0.8);
+  }
+
+  .btn-soft-danger {
+    @apply bg-rose-100 text-rose-700 ring-1 ring-inset ring-rose-300 hover:bg-rose-200;
+  }
+
+  .btn-ghost {
+    @apply text-slate-600 hover:bg-slate-100 hover:text-slate-900;
+  }
+
+  .btn-xs {
+    @apply gap-1 rounded-lg px-2.5 py-1.5 text-xs;
+  }
+
+  /* 16px en móvil evita el zoom automático al tocar el campo. */
+  .input {
+    @apply min-h-11 rounded-2xl border-0 bg-slate-100 px-3.5 py-2.5 text-base text-slate-900 ring-1 ring-inset ring-slate-300 placeholder:text-slate-500 transition-shadow focus:outline-none focus:ring-2 focus:ring-brand-500 focus:shadow-[0_0_0_4px_rgba(139,92,246,0.18)] sm:text-sm;
+  }
+}
+
+.input.input-error {
+  --tw-ring-color: #fb7185;
+}
+
+select.input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
+  background-position: right 0.65rem center;
+  background-repeat: no-repeat;
+  background-size: 1rem 1rem;
+  padding-right: 2.25rem;
+}
+
+select.input option {
+  background: #0b1222;
+  color: #f1f5f9;
+}
+
+/* Barras de desplazamiento discretas. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 92, 246, 0.4) transparent;
+}

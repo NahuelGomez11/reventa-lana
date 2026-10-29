@@ -1,0 +1,20 @@
+# Dependencias y salida de build
+/node_modules
+/dist
+/coverage
+
+# Entorno con secretos (NUNCA subir)
+.env
+.env.*
+!.env.example
+
+# Persistencia local del refresh_token de Mercado Libre (rotativo)
+.mercado-token.json
+*.mercado-token.json
+
+# Estado temporal de una autorizacion OAuth en curso (state/code_verifier)
+.mercado-oauth-state.json
+*.mercado-oauth-state.json
+
+# Logs
+*.log

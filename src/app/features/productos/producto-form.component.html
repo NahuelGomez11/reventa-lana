@@ -1,0 +1,569 @@
+<a routerLink="/productos" class="text-sm font-medium text-slate-500">← Mis productos</a>
+<h1 class="mt-2 text-2xl font-bold tracking-tight">{{ titulo() }}</h1>
+
+@if (noEncontrado()) {
+  <div class="mt-4 rounded-2xl border border-amber-200 bg-amber-50 p-4">
+    <p class="text-sm font-semibold text-amber-900">No encontramos ese producto.</p>
+    <p class="mt-1 text-sm text-amber-800">Puede que lo hayas borrado o que el enlace no sea válido.</p>
+    <a routerLink="/productos" class="mt-3 inline-block text-sm font-semibold text-brand-700">Volver a mis productos</a>
+  </div>
+} @else {
+  <!-- Progreso: 4 pasos -->
+  <ol class="mt-4 grid grid-cols-4 gap-2" aria-label="Pasos del análisis">
+    @for (s of pasos; track s.n) {
+      <li>
+        <button
+          type="button"
+          class="flex w-full flex-col items-center gap-1 rounded-2xl px-1 py-2 text-center text-xs font-medium transition-colors"
+          [class]="paso() === s.n ? 'bg-gradient-to-br from-violet-500 to-cyan-400 text-[#050914] shadow-[0_0_20px_-6px_rgba(139,92,246,0.9)]' : paso() > s.n ? 'bg-brand-50 text-brand-800' : 'bg-white text-slate-500 ring-1 ring-slate-200'"
+          [attr.aria-current]="paso() === s.n ? 'step' : null"
+          (click)="irAPaso(s.n)"
+        >
+          <span class="text-sm font-bold">{{ s.n }}</span>
+          <span class="leading-tight">{{ s.titulo }}</span>
+        </button>
+      </li>
+    }
+  </ol>
+
+  <form class="mt-5 grid gap-5 lg:grid-cols-3" [formGroup]="form" (ngSubmit)="alEnviar()">
+    <div class="grid content-start gap-5 lg:col-span-2">
+
+      <!-- PASO 1 -->
+      @if (paso() === 1) {
+        <section class="card">
+          <p class="text-xs font-semibold uppercase tracking-wide text-brand-700">Paso 1 de 4</p>
+          <h2 class="mt-1 text-xl font-bold text-slate-900">¿Qué producto querés comprar?</h2>
+          <p class="mt-1 text-sm text-slate-600">Ponele un nombre fácil de reconocer.</p>
+
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <app-campo-texto
+              [etiqueta]="'Nombre del producto'"
+              [control]="c.nombre"
+              [marcador]="'Ej.: Auriculares inalámbricos'"
+              [mostrarErrores]="enviado()"
+              [anchoCompleto]="true"
+            />
+            <app-campo-texto [etiqueta]="'Marca (opcional)'" [control]="c.marca" [mostrarErrores]="enviado()" />
+            <app-campo-texto [etiqueta]="'Modelo (opcional)'" [control]="c.modelo" [mostrarErrores]="enviado()" />
+            <app-selector-categoria
+              [etiqueta]="'CategorA-a (opcional)'"
+              [valor]="c.categoria.value ?? ''"
+              (cambio)="c.categoria.setValue($event)"
+            />
+            <label class="block text-sm">
+              <span class="font-medium text-slate-800">Gama (opcional)</span>
+              <select class="mt-1 w-full input" formControlName="gama">
+                <option [ngValue]="null">Sin gama</option>
+                <option value="baja">Baja</option>
+                <option value="media">Media</option>
+                <option value="alta">Alta</option>
+              </select>
+              <span class="mt-1 block text-xs text-slate-500">
+                Para comparar artA-culos similares (ej. dispositivos de audio).
+              </span>
+            </label>
+            <div class="rounded-2xl bg-slate-50 p-3 text-sm sm:col-span-2">
+              <p class="text-xs text-slate-500">Recargo configurado (por categoría + gama)</p>
+              <p class="mt-1 font-medium text-slate-900">
+                @if (recargoPctForm() != null) {
+                  {{ recargoPctForm() }}%
+                } @else {
+                  <span class="text-amber-700">Sin configurar</span>
+                }
+              </p>
+              <p class="mt-2 text-xs text-slate-500">Precio de venta sugerido</p>
+              <p class="font-semibold text-emerald-700">
+                @if (precioSugeridoForm() != null) {
+                  {{ precioSugeridoForm() | importe: moneda() }}
+                } @else {
+                  <span class="text-amber-700">Falta configurar el recargo o completar costos</span>
+                }
+              </p>
+              @if (precioSugeridoForm() != null) {
+                <button type="button" class="btn-secondary mt-2" (click)="aplicarPrecioSugerido()">
+                  Usar precio sugerido
+                </button>
+              }
+            </div>
+
+            <label class="block text-sm sm:col-span-2">
+              <span class="font-medium text-slate-800">Tipo de producto (para sugerir margen)</span>
+              <select class="mt-1 w-full input" formControlName="tipoProductoId">
+                <option [ngValue]="null">Sin sugerencia</option>
+                @for (t of tiposProducto; track t.id) {
+                  <option [ngValue]="t.id">{{ t.nombre }} · margen sugerido {{ t.margenSugeridoPct }}%</option>
+                }
+              </select>
+              <span class="mt-1 block text-xs text-slate-500">
+                Supuesto de ejemplo por categoría. Ajustá el margen a tu negocio en "Ajustes".
+              </span>
+            </label>
+            <div class="block text-sm">
+              <span class="font-medium text-slate-800">Proveedor principal (opcional)</span>
+              <button
+                type="button"
+                class="mt-1 flex min-h-11 w-full items-center justify-between gap-2 input text-left"
+                (click)="abrirPicker()"
+              >
+                @if (proveedorPrincipal(); as p) {
+                  <span class="min-w-0">
+                    <span class="block truncate text-slate-900">{{ p.nombre }}</span>
+                  </span>
+                } @else {
+                  <span class="text-slate-400">Elegir de mis proveedores</span>
+                }
+                <span class="shrink-0 text-slate-400" aria-hidden="true">▾</span>
+              </button>
+              @if (proveedoresCatalogo().length === 0) {
+                <span class="mt-1 block text-xs text-slate-500">
+                  Todavía no tenés proveedores.
+                  <a routerLink="/proveedores" class="font-medium text-brand-700">Cargar uno</a>
+                </span>
+              }
+            </div>
+          </div>
+
+          <details class="mt-4 rounded-2xl border border-slate-200 p-4">
+            <summary class="cursor-pointer text-sm font-medium text-slate-700">Más datos (opcional)</summary>
+            <div class="mt-4 grid gap-4 sm:grid-cols-2">
+              <app-campo-texto
+                [etiqueta]="'Características'"
+                [control]="c.caracteristicas"
+                [mostrarErrores]="enviado()"
+                [multilinea]="true"
+                [anchoCompleto]="true"
+                [marcador]="'Ej.: 64 GB, color negro, incluye cargador'"
+              />
+              <app-campo-numero
+                [etiqueta]="'Precio mínimo que aceptarías (' + moneda() + ')'"
+                [control]="c.precioMinimoAceptable"
+                [mostrarErrores]="enviado()"
+                [ayuda]="'Si el precio de venta queda por debajo, te avisamos.'"
+              />
+            </div>
+          </details>
+        </section>
+      }
+
+      <!-- PASO 2 -->
+      @if (paso() === 2) {
+        <section class="card">
+          <p class="text-xs font-semibold uppercase tracking-wide text-brand-700">Paso 2 de 4</p>
+          <h2 class="mt-1 text-xl font-bold text-slate-900">¿Cuánto te cuesta comprarlo?</h2>
+          <p class="mt-1 text-sm text-slate-600">Usá el precio de un proveedor que ya cargaste, o ingresalo a mano.</p>
+
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <app-campo-numero
+              [etiqueta]="'¿Cuántas unidades vas a comprar?'"
+              [control]="c.cantidad"
+              [mostrarErrores]="enviado()"
+              [minimo]="1"
+            />
+
+            <label class="block text-sm sm:col-span-2">
+              <span class="font-medium text-slate-800">Precio de compra</span>
+              <select class="mt-1 w-full input" formControlName="ofertaCompraId">
+                <option [ngValue]="null">Lo cargo yo a mano</option>
+                @for (o of ofertasCompra(); track o.id) {
+                  <option [ngValue]="o.id">{{ o.nombre }} · {{ o.precioUnitario | importe: moneda() }} por unidad</option>
+                }
+              </select>
+              <span class="mt-1 block text-xs text-slate-500">
+                @if (ofertasCompra().length === 0) {
+                  Este producto todavía no tiene proveedores. Podés agregarlos después, desde su pantalla.
+                } @else {
+                  Si elegís un proveedor, usamos su precio y su envío.
+                }
+              </span>
+            </label>
+
+            @if (ofertaCompraSeleccionada(); as oferta) {
+              <div class="rounded-2xl bg-brand-50 p-4 text-sm sm:col-span-2">
+                <p class="font-semibold text-slate-900">Usamos el precio de {{ oferta.nombre }}</p>
+                <p class="mt-1 text-slate-700">
+                  {{ oferta.precioUnitario | importe: moneda() }} por unidad y
+                  {{ oferta.envio | importe: moneda() }} de envío en total.
+                </p>
+              </div>
+            } @else {
+              <app-campo-numero
+                [etiqueta]="'Precio por unidad (' + moneda() + ')'"
+                [control]="c.precioCompraUnitario"
+                [mostrarErrores]="enviado()"
+              />
+              <app-campo-numero
+                [etiqueta]="'Envío del proveedor (' + moneda() + ', total)'"
+                [control]="c.envioProveedor"
+                [mostrarErrores]="enviado()"
+                [ayuda]="'Si no hay envío, dejá 0.'"
+              />
+            }
+
+            @for (a of resolucionCompra().advertencias; track a) {
+              <p class="rounded-xl bg-amber-50 p-3 text-sm text-amber-800 sm:col-span-2">{{ a }}</p>
+            }
+          </div>
+
+          <details class="mt-4 rounded-2xl border border-slate-200 p-4">
+            <summary class="cursor-pointer text-sm font-medium text-slate-700">Otros gastos de compra (opcional)</summary>
+            <div class="mt-4 grid gap-4 sm:grid-cols-2">
+              <app-campo-numero
+                [etiqueta]="'Otros gastos (' + moneda() + ', total)'"
+                [control]="c.otrosCostosAdquisicion"
+                [mostrarErrores]="enviado()"
+                [ayuda]="'Por ejemplo: embalaje o trámites.'"
+              />
+              <app-campo-numero
+                [etiqueta]="'Tu capital disponible (' + moneda() + ')'"
+                [control]="c.capitalDisponible"
+                [mostrarErrores]="enviado()"
+                [ayuda]="'Sirve para saber qué parte de tu dinero usás.'"
+              />
+            </div>
+          </details>
+        </section>
+      }
+
+      <!-- PASO 3 -->
+      @if (paso() === 3) {
+        <section class="card">
+          <p class="text-xs font-semibold uppercase tracking-wide text-brand-700">Paso 3 de 4</p>
+          <h2 class="mt-1 text-xl font-bold text-slate-900">¿A qué precio lo vendés?</h2>
+          <p class="mt-1 text-sm text-slate-600">Podés poner el precio, o decirnos cuánto querés ganar y lo calculamos.</p>
+
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <label class="block text-sm sm:col-span-2">
+              <span class="font-medium text-slate-800">¿Cómo querés definir el precio?</span>
+              <select class="mt-1 w-full input" formControlName="modoPrecio">
+                <option value="precio">Ya tengo un precio de venta</option>
+                <option value="margen">Quiero ganar un porcentaje</option>
+              </select>
+            </label>
+
+            @if (c.modoPrecio.value === 'margen') {
+              <app-campo-numero
+                [etiqueta]="'¿Qué porcentaje querés ganar? (%)'"
+                [control]="c.margenObjetivoPct"
+                [mostrarErrores]="enviado()"
+                [ayuda]="'Ganancia sobre el precio de venta.'"
+              />
+              <div class="flex flex-wrap gap-2 sm:col-span-2">
+                @for (m of porcentajesRapidos; track m) {
+                  <button type="button" class="btn-secondary btn-xs" (click)="aplicarMargen(m)">{{ m }}%</button>
+                }
+                @if (margenSugerido(); as sugerido) {
+                  <button type="button" class="btn-primary btn-xs" (click)="aplicarMargen(sugerido)">
+                    Sugerido ({{ sugerido }}%)
+                  </button>
+                  @if (precioSugeridoPorTipo(); as precio) {
+                    <span class="self-center text-xs text-slate-500">
+                      Precio sugerido: {{ precio | importe: moneda() }}
+                    </span>
+                  }
+                }
+              </div>
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <p class="text-sm text-slate-600">Precio de venta sugerido</p>
+                <p class="mt-1 text-2xl font-bold text-slate-900">
+                  @if (precioSugeridoPorMargen(); as precioCalculado) {
+                    {{ precioCalculado | importe: moneda() }}
+                  } @else {
+                    —
+                  }
+                </p>
+              </div>
+            } @else {
+              <app-campo-numero
+                [etiqueta]="'Precio de venta (' + moneda() + ')'"
+                [control]="c.precioVentaObjetivo"
+                [mostrarErrores]="enviado()"
+              />
+              @if (margenSugerido(); as sugerido) {
+                <div class="rounded-2xl bg-brand-50 p-4 sm:col-span-2">
+                  <p class="text-sm font-medium text-slate-800">Sugerencia para {{ tipoProducto()?.nombre }}</p>
+                  <p class="mt-1 text-sm text-slate-700">
+                    Con un margen del {{ sugerido }}% te convendría vender a
+                    <strong>{{ precioSugeridoPorTipo() | importe: moneda() }}</strong>.
+                  </p>
+                  <button type="button" class="btn-secondary mt-2" (click)="aplicarMargen(sugerido)">
+                    Usar ese margen
+                  </button>
+                </div>
+              }
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <p class="text-sm text-slate-600">Ganancia sobre el precio de venta</p>
+                <p class="mt-1 text-2xl font-bold text-slate-900">
+                  {{ (analisis().resultado?.margenNetoSobreVentas ?? null) | porcentaje: 1 }}
+                </p>
+              </div>
+            }
+
+            <app-campo-numero
+              [etiqueta]="'Envío que paga el cliente (' + moneda() + ')'"
+              [control]="c.envioCliente"
+              [mostrarErrores]="enviado()"
+              [ayuda]="'Si el envío es gratis, dejá 0.'"
+            />
+            <app-campo-numero
+              [etiqueta]="'Otros gastos de venta (' + moneda() + ')'"
+              [control]="c.otrosCostosVenta"
+              [mostrarErrores]="enviado()"
+            />
+          </div>
+
+          <details class="mt-4 rounded-2xl border border-slate-200 p-4">
+            <summary class="cursor-pointer text-sm font-medium text-slate-700">
+              Comisiones, impuestos y publicidad (opcional)
+            </summary>
+            <div class="mt-4 grid gap-4 sm:grid-cols-2">
+              <label class="block text-sm">
+                <span class="font-medium text-slate-800">Comisión de la plataforma</span>
+                <select class="mt-1 w-full input" formControlName="modoComision">
+                  <option value="porcentaje">En porcentaje (%)</option>
+                  <option value="monto">En pesos por unidad</option>
+                </select>
+              </label>
+              @if (c.modoComision.value === 'porcentaje') {
+                <app-campo-numero [etiqueta]="'Comisión (%)'" [control]="c.comisionPorcentaje" [mostrarErrores]="enviado()" />
+              } @else {
+                <app-campo-numero [etiqueta]="'Comisión por unidad (' + moneda() + ')'" [control]="c.comisionMonto" [mostrarErrores]="enviado()" />
+              }
+
+              <label class="block text-sm">
+                <span class="font-medium text-slate-800">Impuestos</span>
+                <select class="mt-1 w-full input" formControlName="modoImpuestos">
+                  <option value="porcentaje">En porcentaje (%)</option>
+                  <option value="monto">En pesos por unidad</option>
+                </select>
+              </label>
+              @if (c.modoImpuestos.value === 'porcentaje') {
+                <app-campo-numero [etiqueta]="'Impuestos (%)'" [control]="c.impuestosPorcentaje" [mostrarErrores]="enviado()" />
+              } @else {
+                <app-campo-numero [etiqueta]="'Impuestos por unidad (' + moneda() + ')'" [control]="c.impuestosMonto" [mostrarErrores]="enviado()" />
+              }
+
+              <label class="block text-sm">
+                <span class="font-medium text-slate-800">Publicidad</span>
+                <select class="mt-1 w-full input" formControlName="modoPublicidad">
+                  <option value="unidad">Por unidad vendida</option>
+                  <option value="presupuesto">Un presupuesto total</option>
+                </select>
+              </label>
+              @if (c.modoPublicidad.value === 'unidad') {
+                <app-campo-numero [etiqueta]="'Publicidad por unidad (' + moneda() + ')'" [control]="c.publicidadPorUnidad" [mostrarErrores]="enviado()" />
+              } @else {
+                <app-campo-numero [etiqueta]="'Presupuesto de publicidad (' + moneda() + ')'" [control]="c.publicidadPresupuesto" [mostrarErrores]="enviado()" />
+              }
+            </div>
+          </details>
+        </section>
+
+        <section class="card">
+          <h2 class="text-base font-semibold text-slate-900">Comparar con otros lugares</h2>
+          <p class="mt-1 text-sm text-slate-600">
+            Anotá precios reales que veas en otros lugares (nunca el tuyo). Sirven para saber si tu precio es razonable.
+          </p>
+
+          <div class="mt-4">
+            <app-busqueda-mercado
+              [nombre]="c.nombre.value"
+              [marca]="c.marca.value"
+              [modelo]="c.modelo.value"
+              [minimoObservaciones]="minimoObservacionesMercado()"
+              (usar)="importarObservacionesMercado($event)"
+            />
+          </div>
+
+          @if (observaciones().length > 0) {
+            <ul class="mt-4 flex flex-wrap gap-2">
+              @for (o of observaciones(); track o.id) {
+                <li class="flex items-center gap-2 rounded-full bg-slate-100 py-1.5 pl-3 pr-2 text-sm">
+                  <span class="font-medium">{{ o.precio | importe: moneda() }}</span>
+                  <button type="button" class="rounded-full px-2 text-xs font-medium text-rose-700" (click)="quitarPrecioMercado(o.id)">
+                    Quitar
+                  </button>
+                </li>
+              }
+            </ul>
+          }
+
+          <div class="mt-4 flex flex-wrap items-end gap-2">
+            <label class="block text-sm">
+              <span class="font-medium text-slate-800">Precio que viste ({{ moneda() }})</span>
+              <input
+                type="number"
+                inputmode="decimal"
+                class="mt-1 w-44 input"
+                [value]="borradorPrecioMercado()"
+                (input)="borradorPrecioMercado.set(aNumero($event))"
+              />
+            </label>
+            <button type="button" class="btn-secondary" (click)="agregarPrecioMercado()">Agregar precio</button>
+          </div>
+          @if (errorMercado()) {
+            <p class="mt-2 text-xs text-rose-700">{{ errorMercado() }}</p>
+          }
+
+          @if (estadisticasMercado().cantidad > 0) {
+            <p class="mt-4 rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
+              Precios que viste: entre
+              <strong>{{ estadisticasMercado().minimo | importe: moneda() }}</strong> y
+              <strong>{{ estadisticasMercado().maximo | importe: moneda() }}</strong>.
+              @if (!estadisticasMercado().suficiente) {
+                <span class="block text-xs text-amber-700">Todavía son pocos precios para comparar bien.</span>
+              }
+            </p>
+          }
+
+          @if (precioComparado(); as precio) {
+            <div
+              class="mt-4 rounded-2xl p-4 text-sm"
+              [class]="ubicacionMercado() === 'dentro' ? 'bg-emerald-50 text-emerald-900' : 'bg-amber-50 text-amber-900'"
+            >
+              <p class="font-semibold">Tu precio: {{ precio | importe: moneda() }}</p>
+              @switch (ubicacionMercado()) {
+                @case ('dentro') {
+                  <p class="mt-1">Está dentro de lo que se ve en el mercado.</p>
+                }
+                @case ('por_debajo') {
+                  <p class="mt-1">Está por debajo de lo más barato que viste. Podrías subirlo.</p>
+                }
+                @case ('por_encima') {
+                  <p class="mt-1">Está por encima de lo más caro que viste. Puede costarte venderlo.</p>
+                }
+                @default {
+                  <p class="mt-1">Cargá precios de otros lugares para compararlo.</p>
+                }
+              }
+            </div>
+          }
+        </section>
+      }
+
+      <!-- PASO 4 -->
+      @if (paso() === 4) {
+        <section class="card">
+          <p class="text-xs font-semibold uppercase tracking-wide text-brand-700">Paso 4 de 4</p>
+          <h2 class="mt-1 text-xl font-bold text-slate-900">Revisá el resultado</h2>
+          <p class="mt-1 text-sm text-slate-600">Si todo está bien, guardá el análisis.</p>
+          <div class="mt-4">
+            <app-resumen-financiero
+              [resultado]="analisis().resultado"
+              [faltantes]="faltantes()"
+              [moneda]="moneda()"
+            />
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 class="text-base font-semibold text-slate-900">Alertas</h2>
+          <div class="mt-3">
+            <app-lista-alertas [alertas]="analisis().alertas" />
+          </div>
+        </section>
+      }
+
+      @if (mensaje()) {
+        <div class="rounded-2xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800">{{ mensaje() }}</div>
+      }
+
+      @if (enviado() && faltantes().length > 0) {
+        <div class="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+          Para guardar falta completar: {{ faltantes().join(', ') }}.
+        </div>
+      }
+
+      <!-- Navegación entre pasos -->
+      <div class="sticky bottom-20 z-10 -mx-4 flex gap-3 border-t border-slate-200 bg-white/95 p-4 backdrop-blur md:static md:mx-0 md:border-0 md:bg-transparent md:p-0">
+        @if (paso() > 1) {
+          <button type="button" class="btn-secondary flex-1 md:flex-none" (click)="anterior()">Atrás</button>
+        }
+        @if (paso() < 4) {
+          <button type="button" class="btn-primary flex-1 md:flex-none md:px-8" (click)="siguiente()">Siguiente</button>
+        } @else {
+          <button type="submit" class="btn-primary flex-1 md:flex-none md:px-8" [disabled]="guardando()">
+            {{ guardando() ? 'Guardando…' : 'Guardar análisis' }}
+          </button>
+        }
+        <a routerLink="/productos" class="hidden self-center text-sm font-medium text-slate-500 md:inline">Cancelar</a>
+      </div>
+    </div>
+
+    <!-- Resultado en vivo (escritorio) -->
+    <aside
+      [class]="paso() === 4 ? 'content-start gap-4 lg:sticky lg:top-20 lg:grid' : 'content-start gap-4 lg:sticky lg:top-20 lg:grid max-lg:hidden'"
+    >
+      <div class="card">
+        <app-resumen-financiero
+          [resultado]="analisis().resultado"
+          [faltantes]="faltantes()"
+          [moneda]="moneda()"
+        />
+      </div>
+    </aside>
+
+    @if (pickerAbierto()) {
+      <div
+        class="fixed inset-0 z-50 flex items-end justify-center bg-slate-900/40 p-4 sm:items-center"
+        (click)="cerrarPicker()"
+      >
+        <div
+          class="w-full max-w-md rounded-3xl bg-white p-5 shadow-xl"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Elegir proveedor principal"
+          (click)="$event.stopPropagation()"
+        >
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-base font-semibold text-slate-900">Elegí un proveedor</h3>
+            <button type="button" class="text-sm font-medium text-slate-500" (click)="cerrarPicker()">Cerrar</button>
+          </div>
+
+          <div class="mt-3 max-h-80 overflow-y-auto">
+            <button
+              type="button"
+              class="flex min-h-11 w-full items-center justify-between rounded-2xl border px-4 py-3 text-left text-sm"
+              [class.border-brand-400]="!proveedorPrincipal()"
+              (click)="elegirProveedor(null)"
+            >
+              <span class="text-slate-600">Ninguno por ahora</span>
+              @if (!proveedorPrincipal()) {
+                <span class="font-bold text-brand-700">✓</span>
+              }
+            </button>
+
+            @for (p of proveedoresCatalogo(); track p.id) {
+              <button
+                type="button"
+                class="mt-2 flex min-h-11 w-full items-start justify-between gap-2 rounded-2xl border px-4 py-3 text-left text-sm"
+                [class.border-brand-400]="proveedorPrincipal()?.id === p.id"
+                (click)="elegirProveedor(p.id)"
+              >
+                <span class="min-w-0">
+                  <span class="block truncate font-semibold text-slate-900">{{ p.nombre }}</span>
+                  <span class="block truncate text-xs text-slate-500">{{ p.direccion || 'Sin dirección' }}</span>
+                  @if (p.telefono || p.email) {
+                    <span class="block truncate text-xs text-slate-400">
+                      {{ p.telefono }}{{ p.telefono && p.email ? ' · ' : '' }}{{ p.email }}
+                    </span>
+                  }
+                </span>
+                @if (proveedorPrincipal()?.id === p.id) {
+                  <span class="font-bold text-brand-700">✓</span>
+                }
+              </button>
+            }
+
+            @if (proveedoresCatalogo().length === 0) {
+              <p class="mt-3 text-sm text-slate-600">
+                Todavía no tenés proveedores.
+                <a routerLink="/proveedores" class="font-medium text-brand-700" (click)="cerrarPicker()">Cargar uno</a>
+              </p>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </form>
+}

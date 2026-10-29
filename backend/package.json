@@ -1,0 +1,43 @@
+{
+  "name": "reventa-mercado-backend",
+  "version": "0.0.0",
+  "description": "Backend de integracion de mercado (Mercado Libre) para Reventa Intelligence / LANA. Independiente del frontend Angular.",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/main.js",
+    "start:env": "node --env-file=.env dist/main.js",
+    "auth:estado": "node --env-file=.env dist/mercado/oauth/oauth-local.js estado",
+    "auth:iniciar": "node --env-file=.env dist/mercado/oauth/oauth-local.js iniciar",
+    "auth:canjear": "node --env-file=.env dist/mercado/oauth/oauth-local.js canjear",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.2.7",
+    "@nestjs/core": "^11.2.7",
+    "@nestjs/platform-express": "^11.2.7",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@nestjs/testing": "^11.2.7",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^22.0.0",
+    "@types/supertest": "^6.0.2",
+    "jest": "^30.0.0",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.4.0",
+    "typescript": "~6.0.2"
+  },
+  "jest": {
+    "moduleFileExtensions": ["js", "json", "ts"],
+    "rootDir": ".",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": ["src/**/*.(t|j)s"],
+    "coverageDirectory": "./coverage",
+    "testEnvironment": "node"
+  }
+}
